@@ -10,12 +10,9 @@ Falaise2TK::Falaise2TK() : dpp::base_module()
 
 Falaise2TK::~Falaise2TK()
 { 
-	std::cout << "AAA" << std::endl;
 	file->cd();
     	tree->Write();
-    	std::cout << "BBB" << std::endl;
 	file->Close();	
-	std::cout << "CCC" << std::endl;
 	if (this->is_initialized())
 	{
 		this->reset();
@@ -38,10 +35,6 @@ void Falaise2TK::initialize(
 dpp::base_module::process_status Falaise2TK::process(datatools::things& workItem) 
 {
 	event = Falaise2TK::get_event_data(workItem); 
-	event->print();
-	//file->cd();
-	//event->Write();
-		// event -> TKEvent
 	tree->Fill();	
 	delete event;
 	return falaise::processing::status::PROCESS_OK;
